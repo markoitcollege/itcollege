@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Реєстрація студента</h1>
+    </header>
+
+    <main>
+        <section>
+            <form action="." method="post" enctype="multipart/form-data">
+                <h2>Персональна інформація</h2>
+                <fieldset>
+                    <legend>Основна інформація</legend>
+
+                    <div>
+                        <label for="name">Ім'я:</label>
+                        <input type="text" id="name" name="name" required>
+                        
+                    </div>
+
+                    <div>
+                        <label for="surname">Прізвище:</label>
+                        <input type="text" id="surname" name="surname" required>
+                    </div>
+
+                    <div>
+                        <label for="email">Електронна пошта:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div>
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+
+                    <div>
+                        <label for="age">Вік:</label>
+                        <input type="number" id="age" name="age" min="0" max="120" required>
+                    </div>
+
+                    <div>
+                        <label for="date">Дата народження:</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+
+                    <div>
+                        <label for="gender">Стать:</label>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Чоловік</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Жінка</label>
+                        <input type="radio" id="other" name="gender" value="other">
+                        <label for="other">Інше</label>
+                    </div>
+
+                    <div>
+                        <label for="languages">Мови:</label>
+                        <input type="checkbox" id="languages1" name="languages" value="english"><label for="languages1">Англійська </label>
+                        <input type="checkbox" id="languages2" name="languages" value="spanish"><label for="languages2">Іспанська </label>
+                        <input type="checkbox" id="languages3" name="languages" value="french"><label for="languages3">Французька </label>
+                        <input type="checkbox" id="languages4" name="languages" value="ukrainian"><label for="languages4">Українська </label>
+                        <input type="checkbox" id="languages5" name="languages" value="german"><label for="languages5">Німецька </label>
+                    </div>
+
+                    <div>
+                        <label for="country">Країна:</label>
+                        <select id="country" name="country" required>
+                            <option value="">Виберіть країну</option>
+                            <option value="ukraine">Україна</option>
+                            <option value="usa">США</option>
+                            <option value="canada">Канада</option>
+                            <option value="uk">Великобританія</option>
+                        </select>
+                    </div>
+
+                </fieldset>
+
+                <h2>Навчальні предмети</h2>
+
+                <fieldset>
+                    <legend>Вибери навчальні предмети</legend>
+
+                    <div>
+                        <label for="subjects">Навчальні предмети:</label>
+                        <br>
+                        <select multiple id="subjects" name="subjects">
+                            <option value="math">Математика</option>
+                            <option value="physics">Фізика</option>
+                            <option value="chemistry">Хімія</option>
+                            <option value="biology">Біологія</option>
+                            <option value="history">Історія</option>
+                            <option value="geography">Географія</option>
+                        </select>
+
+                    </div>
+
+                    <div>
+                        <label for="range">Оціни інтерес в комп'ютерних науках:</label>
+                        <input type="range" id="range" name="range">
+                    </div>
+
+                </fieldset>
+
+                <h2>Додаткова інформація</h2>
+                <fieldset>
+                    <legend>Опишіть свої навички</legend>
+                    <div>
+                        <label for="textarea">Опис навичок:</label>
+                        <br>
+                        <textarea id="textarea" name="textarea"></textarea>
+                    </div>
+
+                    <div>
+                        <label for="file">Файл:</label>
+                        <input type="file" id="file" name="file">
+                    </div>
+                    <label for="color">Улюблений колір:</label>
+                    <input type="color" id="color" name="color">
+
+                    <div>
+                        <label for="time">Час навчання:</label>
+                        <input type="time" id="time" name="time">
+                    </div>
+                    <div>
+                        <button type="submit">Відправити</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
