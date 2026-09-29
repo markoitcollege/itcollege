@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти та Підписка — Global Adventures Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>Зв'яжіться з нами <span role="img" aria-label="лист">✉️</span></h1>
+        <p>Маєте запитання, хочете поділитися власною історією чи запропонувати співпрацю? Напишіть нам!</p>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="lviv.html">Львів</a></li>
+            <li><a href="kyiv.html">Київ</a></li>
+            <li><a href="odesa.html">Одеса</a></li>
+            <li><a href="gallery.html">Галерея</a></li>
+            <li><a href="contact.html" class="active">Контакти та Підписка</a></li>
+        </ul>
+    </nav>
+
+    <main class="forms-container">
+        
+        <!-- Розділ: Зворотний зв'язок -->
+        <section class="form-section">
+            <h2>Написати нам повідомлення</h2>
+            <form action="#" method="post" class="custom-form">
+                
+                <div class="form-group">
+                    <label for="username">Ваше ім'я:</label>
+                    <input type="text" id="username" name="username" placeholder="Іван Іваненко" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="useremail">Електронна пошта:</label>
+                    <input type="email" id="useremail" name="useremail" placeholder="example@mail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Тема повідомлення:</label>
+                    <input type="text" id="subject" name="subject" placeholder="Співпраця / Порада" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Ваше повідомлення:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Напишіть ваш текст тут..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Надіслати повідомлення</button>
+            </form>
+        </section>
+
+        <!-- Розділ: Підписка на новини -->
+        <section class="form-section">
+            <h2>Підписка на оновлення блогу <span role="img" aria-label="дзвіночок">🔔</span></h2>
+            <form action="#" method="post" class="custom-form">
+                
+                <div class="form-group">
+                    <label for="newsletter-email">Ваш Email для розсилки:</label>
+                    <input type="email" id="newsletter-email" name="newsletter-email" placeholder="name@domain.com" required>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">Я погоджуюся на отримання щотижневої розсилки новин про подорожі.</label>
+                </div>
+
+                <button type="submit" class="btn-submit">Підписатися</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-copyright">
+            <p>&copy; 2035 Global Adventures Blog.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
