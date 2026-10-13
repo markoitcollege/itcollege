@@ -1,0 +1,66 @@
+/* Робимо посилання позиціонованим контейнером для зображення та тексту */
+#featured_container .views-col a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Зображення розтягується на всю ширину блоку */
+#featured_container img.img-responsive {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Градієнтне затемнення знизу фотографії для кращої читабельності тексту */
+#featured_container .shadow_featured {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+}
+
+/* Позиціонування заголовка поверх зображення (внизу фотографії) */
+#featured_container h2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 15px 20px;
+    z-index: 2;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+#featured_container h2 span {
+    color: #ffffff;
+}
+
+/* Адаптивна сітка для колонок (2 колонки в ряду) */
+#featured_container .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+#featured_container .views-col {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 576px) {
+    #featured_container .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
