@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetWorld - Pet Store & Beyond</title>
+    
+    <!-- Підключення шрифту Inter для точного збігу з оригіналом -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Скидання базових відступів браузера */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            color: #000000;
+            background-color: #F8F9FF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* --- HEADER --- */
+        #main-header {
+            background-color: #FFFFFF;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        #header-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #site-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        #logo-img {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+
+        #auth-nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        #signup-link {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        #login-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+            background-color: #3B71FE;
+            color: #FFFFFF;
+            transition: background-color 0.2s ease;
+        }
+
+        #login-btn:hover {
+            background-color: #2B5CE6;
+        }
+
+        /* --- HERO SECTION --- */
+        #hero-section {
+            background-color: #F8F9FF;
+            padding: 60px 0 80px 0;
+            width: 100%;
+        }
+
+        #hero-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        #hero-content {
+            max-width: 520px;
+        }
+
+        #hero-title {
+            font-size: 72px;
+            line-height: 1.02;
+            font-weight: 900; /* Максимальна товщина шрифту як на 1-му скріні */
+            letter-spacing: -1.5px;
+            margin: 0 0 24px 0;
+            color: #000000;
+        }
+
+        #hero-description {
+            font-size: 18px;
+            line-height: 1.45;
+            color: #6C757D;
+            margin: 0 0 32px 0;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+        }
+
+        #get-started-btn {
+            display: inline-block;
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+            background-color: #F8D57E;
+            color: #000000;
+            transition: background-color 0.2s ease;
+        }
+
+        #get-started-btn:hover {
+            background-color: #E8C46E;
+        }
+
+        #hero-img {
+            width: 100%;
+            max-width: 540px;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* --- VIDEO PREVIEW SECTION --- */
+        #video-section {
+            background-color: #F0FBF9;
+            padding: 80px 0;
+            width: 100%;
+        }
+
+        #video-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        #video-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        #video-preview-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка сайту -->
+    <header id="main-header">
+        <div id="header-container">
+            <a href="#" id="site-logo">
+                <img src="images/logo.svg" alt="PetWorld Logo" id="logo-img">
+            </a>
+            <nav id="auth-nav">
+                <a href="#" id="signup-link">Sign Up</a>
+                <a href="https://google.com" id="login-btn" target="_blank">Log in</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Перший екран -->
+    <section id="hero-section">
+        <div id="hero-container">
+            <div id="hero-content">
+                <h1 id="hero-title">Pet Store<br>& Beyond</h1>
+                <p id="hero-description">
+                    This is a sample landing page, created with Figma and Anima. No coding involved.
+                </p>
+                <a href="#" id="get-started-btn">Get Started</a>
+            </div>
+            <div id="hero-image-wrapper">
+                <img src="images/dogs.jpg" alt="Two stylish dogs in outfits" id="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Секція прев'ю відео -->
+    <section id="video-section">
+        <div id="video-container">
+            <div id="video-wrapper">
+                <img src="images/husky-video-preview.jpg" alt="Video preview with husky" id="video-preview-img">
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
