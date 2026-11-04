@@ -126,7 +126,7 @@ a {
   font-size: 18px;
   line-height: 32px;
   font-weight: 400;
-  -webkit-text-stroke: 0.5px #000000;
+  -webkit-text-stroke: 0.3px #000000;
   color: rgba(45, 45, 45, 0.5);
 }
 
