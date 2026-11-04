@@ -1,0 +1,195 @@
+/* Базові скидання та глобальні налаштування */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #2D2D2D;
+  background-color: #FFFFFF;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 100px; /* Внутрішні відступи по боках з Figma */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header / Top Bar 1280px */
+.header {
+  background-color: #FFFFFF;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  height: 34px;   /* Задайте висоту згідно з оригінальним макетом */
+  width: auto;    /* Автоматична ширина зберігає оригінальні пропорції SVG */
+  display: block;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.btn-sign-up {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #2D2D2D;
+}
+
+.btn-log-in {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 153px;
+  height: 54px;
+  background-color: #3366FF;
+  border-radius: 10px;
+  
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #FFFFFF;
+  transition: opacity 0.2s ease;
+}
+
+.btn-log-in:hover {
+  opacity: 0.9;
+}
+
+/* Header 1280px (Hero Section) */
+.hero-section {
+  background-color: #F7F5FD;
+  padding-top: 70px;
+  padding-bottom: 129px;
+}
+
+.hero-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 114px; /* Відстань між текстом та песиками */
+}
+
+.hero-content {
+  width: 466px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.hero-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-title {
+  font-family: 'Mozilla Headline', 'Poppins', sans-serif;
+  font-size: 80px;
+  font-weight: 600;
+  line-height: 90px;
+  color: #2D2D2D;
+  margin-bottom: 24px;
+}
+
+.hero-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 400;
+  color: rgba(45, 45, 45, 0.5);
+}
+
+.btn-get-started {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 203px;
+  height: 64px;
+  background-color: #F8D57E;
+  color: #2D2D2D;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  border-radius: 10px;
+  transition: opacity 0.2s ease;
+}
+
+.btn-get-started:hover {
+  opacity: 0.9;
+}
+
+.hero-image-wrapper {
+  width: 500px;
+  height: 460px;
+  flex-shrink: 0;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Video Section (Video 1280px) */
+.video-section {
+  background-color: #F2FAF8;
+  padding: 70px 257px; /* Точні значення paddings з Figma */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.video-wrapper {
+  width: 765px;
+  height: 460px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.video-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
