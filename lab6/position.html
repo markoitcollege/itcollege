@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            margin-bottom: 50px;
+            border: 1px dashed #ccc;
+            padding: 20px;
+        }
+
+        .box {
+            width: 150px;
+            height: 50px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .static-box {
+            background-color: gray;
+            position: static;
+        }
+
+        .relative-box {
+            background-color: blue;
+            position: relative;
+            top: 20px;
+            left: 30px;
+        }
+
+        .absolute-container {
+            position: relative;
+            height: 150px;
+            background-color: #f3f3f3;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .absolute-box {
+            background-color: green;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+
+        }
+
+        .fixed-box {
+            background-color: red;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .sticky-container {
+            height: 400px;
+            overflow: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .sticky-box {
+            background-color: orange;
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS Position Examples</h1>
+    <!-- Static Example -->
+    <div class="container">
+        <h2>Static Position</h2>
+        <div class="box static-box">Static</div>
+    </div>
+    <!-- Relative Example -->
+    <div class="container">
+        <h2>Relative Position</h2>
+        <div class="box relative-box">Relative</div>
+    </div>
+    <!-- Absolute Example -->
+    <div class="container">
+        <h2>Absolute Position</h2>
+        <div class="absolute-container">
+            Parent (Relative)
+            <div class="box absolute-box">Absolute</div>
+        </div>
+    </div>
+    <!-- Fixed Example -->
+    <div class="container">
+        <h2>Fixed Position</h2>
+        <div class="box fixed-box">Fixed</div>
+    </div>
+
+
+    <!-- Sticky Example -->
+    <div class="container">
+        <h2>Sticky Position</h2>
+        <div class="sticky-container">
+            <div class="box sticky-box">Sticky (Scroll Down)</div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+                sit amet eros eu arcu congue tempus. Mauris ut sagittis purus. Pellentesque
+                habitant morbi tristique senectus et netus et malesuada fames ac turpis
+                egestas. Nulla facilisi. Curabitur eu augue sit amet nisi elementum
+                consectetur. Donec auctor quam eget enim sollicitudin, a convallis nisi dictum.
+                Etiam et erat vitae lacus fermentum sollicitudin. Phasellus nec lectus et
+                lectus pellentesque bibendum ut eu eros. Vivamus commodo, magna nec dictum
+                posuere, sapien dui gravida sem, at sollicitudin enim enim sed purus.</p>
+            <p>Suspendisse potenti. Sed accumsan nisl et risus ullamcorper, in
+                consectetur eros malesuada. Nam volutpat, velit id venenatis pretium, turpis
+                ligula mattis odio, sit amet tempus lectus sem vel sapien. Ut malesuada velit
+                nec orci interdum vehicula. Nulla facilisi. Curabitur tristique tellus vel
+                risus lacinia, at varius est volutpat. Donec sit amet odio sem. Proin ut tortor
+                et neque gravida feugiat.</p>
+        </div>
+    </div>
+</body>
+
+</html>

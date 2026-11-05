@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    /*position: VALUE;*/
+    top: 0;
+    /*z-index: VALUE;*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    padding: 20px;
+}
+
+h2 {
+    /*position: VALUE;*/
+    /*top: VALUE;*/
+    background: #f9f9f9;
+    padding: 10px 0;
+    margin: 0;
+    /*z-index: VALUE;*/
+    border-bottom: 1px solid #ddd;
+}
+
+/* Секція 1 */
+#section-1 img {
+    /*float: VALUE;*/
+    margin-right: 20px;
+    width: 250px;
+    height: 250px;
+}
+
+.text {
+    text-align: justify;
+}
+
+.clear {
+    clear: VALUE;
+}
+
+/* Секція 2 */
+.multicolumn-text {
+    column-width: 300px;
+    column-gap: 20px;
+ /* Текст у 2 колонки */
+}
+
+
+/* Секція 3 */
+#subscribe-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#subscribe-button:hover {
+    background-color: #45a049;
+}
+
+/* Модальне вікно */
+/* Затемнення тла */
+.modal-overlay {
+  display: none; /* Приховано за замовчуванням */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Напівпрозоре затемнення */
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Вікно модалки */
+.modal-content {
+  background-color: #ffffff;
+  padding: 25px 30px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 550px;
+}
+
+/* Форма */
+#emailForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#emailForm label {
+  font-size: 14px;
+  color: #333;
+}
+
+.form-row {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.form-row input[type="email"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #7c7c7c;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Кнопка Зберегти */
+.btn-save {
+  background-color: #32a852; /* Зелений колір як на зображенні */
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-save:hover {
+  background-color: #288742;    
+}
+
+/* Кнопка Підписатися */
+.btn-subscribe {
+  background-color: #32a852;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+/* Контейнер для секції */
+.content-block {
+  overflow: hidden; /* Очищення обтікання (clear float) */
+  margin-bottom: 20px;
+}
+
+/* Зображення обтікає текст зліва */
+#section-1 img {
+  float: left;
+  margin-right: 15px; /* Відступ від зображення до тексту */
+  margin-bottom: 10px;
+  width: 300px;       /* За потреби відкоригуйте розміри */
+  height: 300px;
+}
+
+/* Звичайний параграф */
+#section-1 .text {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Параграф з класом clear скидає обтікання та починається з нового рядка під картинкою */
+#section-1 .clear {
+  clear: both;
+}
