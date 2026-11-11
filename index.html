@@ -1,11 +1,145 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=./lab2/">
-    <title>Лабораторна робота №2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторні роботи — Програмування в Internet</title>
+    <link rel="icon"
+          href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23252775'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='30' font-weight='bold' fill='white' text-anchor='middle'%3EIT%3C/text%3E%3C/svg%3E">
+    <style>
+        :root {
+            --brand: #252775;
+            --brand-hover: #00a1e4;
+            --ink: #1f2430;
+            --muted: #6b7280;
+            --line: #e6e8ef;
+            --bg: #f4f5f9;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: min(100% - 32px, 900px);
+            margin-inline: auto;
+            padding: 48px 0 64px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            color: var(--brand);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+        }
+
+        .subtitle {
+            margin: 0 0 32px;
+            color: var(--muted);
+        }
+
+        .labs {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .lab-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 20px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: #fff;
+            color: inherit;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgb(31 36 48 / 6%);
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-3px);
+            border-color: #cfd4e4;
+            box-shadow: 0 14px 30px rgb(31 36 48 / 14%);
+        }
+
+        .lab-card strong {
+            display: block;
+            font-size: 1.05rem;
+        }
+
+        .lab-card span {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .lab-card::after {
+            content: "→";
+            color: var(--brand);
+            font-size: 1.4rem;
+            transition: color .3s ease, transform .3s ease;
+        }
+
+        .lab-card:hover::after {
+            color: var(--brand-hover);
+            transform: translateX(4px);
+        }
+
+        .lab-card:focus-visible {
+            outline: 3px solid var(--brand-hover);
+            outline-offset: 3px;
+        }
+
+        @media (min-width: 640px) {
+            .labs {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <p>Перенаправлення на <a href="./lab2/">Лабораторну роботу №2</a>...</p>
+    <main class="container">
+        <h1>Лабораторні роботи</h1>
+        <p class="subtitle">Навчальна дисципліна «Програмування в Internet»</p>
+
+        <nav class="labs" aria-label="Список лабораторних робіт">
+            <a class="lab-card" href="lab1/">
+                <div><strong>Лабораторна робота #1</strong><span>Основи HTML</span></div>
+            </a>
+            <a class="lab-card" href="lab2/">
+                <div><strong>Лабораторна робота #2</strong><span>Таблиці та зображення</span></div>
+            </a>
+            <a class="lab-card" href="lab3/">
+                <div><strong>Лабораторна робота #3</strong><span>Форми та елементи керування</span></div>
+            </a>
+            <a class="lab-card" href="lab4/">
+                <div><strong>Лабораторна робота #4</strong><span>Семантика та доступність</span></div>
+            </a>
+            <a class="lab-card" href="lab5/">
+                <div><strong>Лабораторна робота #5</strong><span>Блок новин lpnu.ua</span></div>
+            </a>
+            <a class="lab-card" href="lab6/">
+                <div><strong>Лабораторна робота #6</strong><span>Floats, positioning, multicolumn</span></div>
+            </a>
+            <a class="lab-card" href="lab7/">
+                <div><strong>Лабораторна робота #7</strong><span>Flexbox, Grid, transitions, animations</span></div>
+            </a>
+        </nav>
+    </main>
 </body>
+
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transition Example</title>
+    <style>
+        /* Початковий стиль елемента */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            margin: 250px auto;
+            transition-property: width, height, background-color, transform;
+            /* Задання властивостей для переходу */
+            transition-duration: 1s;
+            /* Тривалість переходу */
+            transition-timing-function: ease-in-out;
+            /* Рівномірний перехід */
+            transition-delay: 0.5s;
+            /* Затримка перед початком переходу */
+        }
+
+        /* Зміна стилів на наведенні курсору */
+        .box:hover {
+            width: 200px;
+            height: 200px;
+            background-color: lightgreen;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

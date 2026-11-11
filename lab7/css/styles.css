@@ -1,0 +1,477 @@
+/* =========================================================
+   Лабораторна робота #7
+   Варіант 3 — header#featured_container
+   Flexbox, CSS Grid, transitions, animations, media queries
+   ========================================================= */
+
+:root {
+    --brand: #252775;
+    --brand-hover: #00a1e4;
+    --ink: #1f2430;
+    --muted: #6b7280;
+    --line: #e6e8ef;
+    --surface: #ffffff;
+    --page-bg: #f4f5f9;
+    --featured-bg: #c2c2c2;
+    --radius: 12px;
+    --gap: 24px;
+    --container: 1200px;
+    --shadow-sm: 0 4px 14px rgb(31 36 48 / 8%);
+    --shadow-lg: 0 18px 40px rgb(31 36 48 / 16%);
+    --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* ---------- Базові стилі ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--brand);
+}
+
+a:focus-visible {
+    outline: 3px solid var(--brand-hover);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.container {
+    width: min(100% - 32px, var(--container));
+    margin-inline: auto;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 100;
+    padding: 10px 16px;
+    background: var(--brand);
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top .25s var(--ease);
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ---------- Верхня панель лабораторної ---------- */
+
+.page-topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+}
+
+.topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    min-height: 64px;
+    padding-block: 10px;
+}
+
+.topbar-brand {
+    color: var(--brand);
+    font-family: "Roboto Condensed", "Roboto", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-decoration: none;
+}
+
+.topbar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.topbar-nav a {
+    color: var(--muted);
+    font-size: .92rem;
+    text-decoration: none;
+    transition: color .25s var(--ease);
+}
+
+.topbar-nav a:hover {
+    color: var(--brand-hover);
+}
+
+/* =========================================================
+   1. header#featured_container — FLEXBOX
+   ========================================================= */
+
+#featured_container {
+    position: relative;
+    padding: clamp(28px, 4vw, 56px) 0;
+    background: var(--featured-bg);
+}
+
+/* декоративна лінія, як на lpnu.ua */
+#featured_container::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    background: linear-gradient(90deg, #979797 0%, var(--featured-bg) 50%, #979797 100%);
+}
+
+/* саме flex-контейнер: вирівнювання та розподіл простору */
+.featured-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: var(--gap);
+}
+
+.featured-card {
+    position: relative;
+    flex: 1 1 100%; /* mobile: 1 колонка */
+    min-width: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    animation: card-fade-up .7s var(--ease) both;
+}
+
+.featured-card:nth-child(2) {
+    animation-delay: .08s;
+}
+
+.featured-card:nth-child(3) {
+    animation-delay: .16s;
+}
+
+.featured-card:nth-child(4) {
+    animation-delay: .24s;
+}
+
+.featured-card > a {
+    position: relative;
+    display: grid;
+    grid-template-areas: "card";
+    height: 100%;
+    color: #fff;
+    text-decoration: none;
+}
+
+.featured-card > a > * {
+    grid-area: card;
+}
+
+.featured-card img {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    opacity: .88;
+    transition: opacity .5s var(--ease), transform .7s var(--ease);
+}
+
+/* градієнт під заголовком */
+.shadow_featured {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 78%;
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0%), rgb(255 255 255 / 85%));
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity .5s var(--ease);
+}
+
+.featured-card h2 {
+    z-index: 1;
+    align-self: end;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+    font-family: "Roboto Condensed", "Roboto", sans-serif;
+    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.featured-card h2 span {
+    padding: 4px 9px;
+    background: var(--brand);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    transition: background .45s var(--ease);
+}
+
+/* hover / focus */
+.featured-card > a:hover img,
+.featured-card > a:focus-visible img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.featured-card > a:hover .shadow_featured,
+.featured-card > a:focus-visible .shadow_featured {
+    opacity: .15;
+}
+
+.featured-card > a:hover h2 span,
+.featured-card > a:focus-visible h2 span {
+    background: var(--brand-hover);
+}
+
+/* ---------- 2. main > .main-container — CSS GRID ---------- */
+
+main {
+    padding: clamp(36px, 5vw, 64px) 0 clamp(48px, 6vw, 80px);
+    background: var(--surface);
+}
+
+.main-container {
+    width: min(100% - 32px, var(--container));
+    margin-inline: auto;
+}
+
+.view-header {
+    margin-bottom: clamp(20px, 3vw, 32px);
+    text-align: center;
+}
+
+.view-header h2 {
+    margin: 0;
+    font-family: "Roboto Condensed", "Roboto", sans-serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+    line-height: 1.2;
+}
+
+.view-header h2 a {
+    position: relative;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color .3s var(--ease);
+}
+
+.view-header h2 a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -8px;
+    left: 0;
+    height: 3px;
+    background: var(--brand);
+    border-radius: 2px;
+    transform-origin: left center;
+    animation: line-grow .8s .25s var(--ease) both;
+    transition: background .3s var(--ease);
+}
+
+.view-header h2 a:hover {
+    color: var(--brand-hover);
+}
+
+.view-header h2 a:hover::after {
+    background: var(--brand-hover);
+}
+
+/* сітка новин */
+.news-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr); /* mobile: 1 колонка */
+    gap: var(--gap);
+}
+
+.news-card {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+    animation: card-fade-up .6s var(--ease) both;
+}
+
+.news-card:nth-child(1) { animation-delay: .04s; }
+.news-card:nth-child(2) { animation-delay: .08s; }
+.news-card:nth-child(3) { animation-delay: .12s; }
+.news-card:nth-child(4) { animation-delay: .16s; }
+.news-card:nth-child(5) { animation-delay: .20s; }
+.news-card:nth-child(6) { animation-delay: .24s; }
+.news-card:nth-child(7) { animation-delay: .28s; }
+.news-card:nth-child(8) { animation-delay: .32s; }
+
+.news-card:hover {
+    transform: translateY(-6px);
+    border-color: #cfd4e4;
+    box-shadow: var(--shadow-lg);
+}
+
+.news-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.news_teaser {
+    position: relative;
+    overflow: hidden;
+}
+
+.news_teaser img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform .6s var(--ease), filter .6s var(--ease);
+}
+
+.news-card:hover .news_teaser img {
+    transform: scale(1.06);
+}
+
+.news-date {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgb(37 39 117 / 92%);
+    color: #fff;
+    font-size: .78rem;
+    letter-spacing: .02em;
+    backdrop-filter: blur(4px);
+}
+
+.news-card h3 {
+    margin: 0;
+    padding: 16px;
+    font-family: "Roboto Condensed", "Roboto", sans-serif;
+    font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.35;
+    transition: color .3s var(--ease);
+}
+
+.news-card:hover h3 {
+    color: var(--brand-hover);
+}
+
+/* ---------- Підвал ---------- */
+
+.page-footer {
+    padding: 24px 0;
+    background: #1f2430;
+    color: #c9cede;
+}
+
+.page-footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: .88rem;
+}
+
+.page-footer a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgb(255 255 255 / 35%);
+    transition: border-color .25s var(--ease);
+}
+
+.page-footer a:hover {
+    border-color: #fff;
+}
+
+/* ---------- Анімації ---------- */
+
+@keyframes card-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes line-grow {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* ---------- Адаптивність: 3 брейкпоінти ---------- */
+
+/* Tablet: 768px – 1023px — 2 колонки */
+@media (min-width: 768px) {
+    .featured-card {
+        flex-basis: calc((100% - var(--gap)) / 2);
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Desktop: 1024px і більше — 4 колонки */
+@media (min-width: 1024px) {
+    .featured-card {
+        flex-basis: calc((100% - 3 * var(--gap)) / 4);
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* Повага до налаштувань користувача */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+    }
+}
