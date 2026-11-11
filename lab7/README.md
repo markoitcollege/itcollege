@@ -167,6 +167,19 @@ lab7/
 </a>
 ```
 
+### 4.6. Типографіка
+
+Шрифти підключено так само, як у лабораторній роботі №5:
+
+```html
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed:regular,700&amp;subset=cyrillic,cyrillic-ext">
+```
+
+- заголовки (`h2`, `h3`, бренд у верхній панелі) — `'Roboto Condensed', sans-serif`;
+- основний текст — стандартний стек Bootstrap 3: `"Helvetica Neue", Helvetica, Arial, sans-serif`;
+- для заголовків featured-карток використано `font-style: normal; font-weight: normal;`, як у `#featured_container h2` з lab5.
+
 ## 5. Результати перевірки адаптивності
 
 Перевірку виконано в Chrome (Playwright) на ширинах 320, 767, 768, 1023, 1024 і 1440 px.
