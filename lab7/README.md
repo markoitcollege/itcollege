@@ -40,8 +40,7 @@ lab7/
 Сторінка містить:
 
 - `header#featured_container` — 4 обрані новини (Flexbox);
-- `main > div.main-container` — блок «Новини університету» з 8 картками (CSS Grid);
-- підвал.
+- `main > div.main-container` — блок «Новини університету» з 8 картками (CSS Grid).
 
 ## 4. Хід виконання
 
@@ -217,7 +216,7 @@ lab7/
 
 ### 4.1. Які властивості CSS Flexbox використали в роботі?
 
-- `display: flex` — створення flex-контейнерів (`.featured-flex`, `.topbar-inner`, `.news-card-link`, підвал);
+- `display: flex` — створення flex-контейнерів (`.featured-flex`, `.news-card-link`);
 - `flex-wrap: wrap` — перенесення карток на новий рядок;
 - `justify-content: space-between` — рівномірний розподіл простору між картками по горизонталі;
 - `align-items: stretch` — вирівнювання карток по висоті;

@@ -345,34 +345,6 @@ main {
     color: var(--brand-hover);
 }
 
-/* ---------- Підвал ---------- */
-
-.page-footer {
-    padding: 24px 0;
-    background: #1f2430;
-    color: #c9cede;
-}
-
-.page-footer .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-    font-size: .88rem;
-}
-
-.page-footer a {
-    color: #fff;
-    text-decoration: none;
-    border-bottom: 1px solid rgb(255 255 255 / 35%);
-    transition: border-color .25s var(--ease);
-}
-
-.page-footer a:hover {
-    border-color: #fff;
-}
-
 /* ---------- Анімації ---------- */
 
 @keyframes card-fade-up {
