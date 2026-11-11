@@ -7,16 +7,11 @@
     --brand: #252775;
     --brand-hover: #00a1e4;
     --ink: #1f2430;
-    --muted: #6b7280;
-    --line: #e6e8ef;
     --surface: #ffffff;
     --page-bg: #f4f5f9;
     --featured-bg: #c2c2c2;
-    --radius: 12px;
     --gap: 24px;
     --container: 1200px;
-    --shadow-sm: 0 4px 14px rgb(31 36 48 / 8%);
-    --shadow-lg: 0 18px 40px rgb(31 36 48 / 16%);
     --ease: cubic-bezier(.22, .61, .36, 1);
 }
 
@@ -219,7 +214,7 @@ main {
 
 .view-header h2 a {
     position: relative;
-    color: var(--ink);
+    color: #1f6ba5;
     text-decoration: none;
     transition: color .3s var(--ease);
 }
@@ -228,38 +223,32 @@ main {
     content: "";
     position: absolute;
     right: 0;
-    bottom: -8px;
+    bottom: -6px;
     left: 0;
-    height: 3px;
-    background: var(--brand);
-    border-radius: 2px;
+    height: 2px;
+    background: #1f6ba5;
     transform-origin: left center;
     animation: line-grow .8s .25s var(--ease) both;
     transition: background .3s var(--ease);
 }
 
 .view-header h2 a:hover {
-    color: var(--brand-hover);
+    color: #144f7c;
 }
 
 .view-header h2 a:hover::after {
-    background: var(--brand-hover);
+    background: #144f7c;
 }
 
 /* сітка новин */
 .news-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr); /* mobile: 1 колонка */
-    gap: var(--gap);
+    gap: 40px 28px;
 }
 
 .news-card {
-    overflow: hidden;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--surface);
-    box-shadow: var(--shadow-sm);
-    transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+    background: transparent;
     animation: card-fade-up .6s var(--ease) both;
 }
 
@@ -271,12 +260,6 @@ main {
 .news-card:nth-child(6) { animation-delay: .24s; }
 .news-card:nth-child(7) { animation-delay: .28s; }
 .news-card:nth-child(8) { animation-delay: .32s; }
-
-.news-card:hover {
-    transform: translateY(-6px);
-    border-color: #cfd4e4;
-    box-shadow: var(--shadow-lg);
-}
 
 .news-card-link {
     display: flex;
@@ -304,22 +287,22 @@ main {
 
 .news-date {
     position: absolute;
-    bottom: 12px;
-    left: 12px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgb(37 39 117 / 92%);
+    bottom: 0;
+    left: 0;
+    padding: 4px 8px;
+    background: rgb(70 70 70 / 78%);
     color: #fff;
-    font-size: .85rem;
-    letter-spacing: .02em;
-    backdrop-filter: blur(4px);
+    font-size: .72rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
 }
 
 .news-card h3 {
     margin: 0;
-    padding: 16px;
+    padding: 12px 6px 0;
+    color: #1f6ba5;
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: 1.08rem;
+    font-size: 1.12rem;
     font-style: normal;
     font-weight: normal;
     line-height: 1.4;
@@ -327,7 +310,8 @@ main {
 }
 
 .news-card:hover h3 {
-    color: var(--brand-hover);
+    color: #144f7c;
+    text-decoration: underline;
 }
 
 /* ---------- Анімації ---------- */
