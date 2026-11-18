@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="World Trivia — щоденні вікторини, цікаві факти та рейтинг гравців з усього світу.">
+  <title>World Trivia — щоденні вікторини про світ</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="World Trivia — на головну">
+        <span class="brand-mark" aria-hidden="true">?</span>
+        <span class="brand-name">World <span>Trivia</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Головна навігація">
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#trivia">Trivia</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#scores">Scores</a></li>
+          <li><a href="#subscribe">Subscribe</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+
+      <!-- Home -->
+      <section id="home" class="section hero" aria-labelledby="home-title">
+        <div class="hero-content">
+          <p class="eyebrow">Щоденні вікторини про світ</p>
+          <h1 id="home-title">World Trivia — грай, пізнавай, перемагай</h1>
+          <p class="lead">
+            World Trivia — це онлайн-платформа для тих, хто любить подорожувати,
+            не виходячи з дому. Щодня ми готуємо нові запитання про географію,
+            історію, культуру та науку, а ви змагаєтеся за місце в глобальному
+            рейтингу гравців.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#subscribe">Спробувати Puzzle of the Day</a>
+            <a class="btn btn-ghost" href="#categories">Оглянути категорії</a>
+          </div>
+          <ul class="hero-stats" aria-label="Ключові показники">
+            <li><strong>120+</strong><span>країн</span></li>
+            <li><strong>8</strong><span>категорій</span></li>
+            <li><strong>15 000</strong><span>запитань</span></li>
+          </ul>
+        </div>
+        <img class="hero-art" src="images/globe.svg" alt="Ілюстрація глобуса з позначками країн світу" width="400" height="300">
+      </section>
+
+      <!-- Trivia -->
+      <section id="trivia" class="section" aria-labelledby="trivia-title">
+        <h2 class="section-title" id="trivia-title">Trivia</h2>
+        <p class="section-intro">
+          Три формати гри, які допоможуть перевірити ерудицію та відкрити щось нове.
+        </p>
+
+        <div class="trivia-list">
+          <article class="trivia-item">
+            <img src="images/globe.svg" alt="Глобус із прапорцями — символ подорожей у вікторині" width="150" height="112" loading="lazy">
+            <div class="trivia-text">
+              <h3>Питання з усього світу</h3>
+              <p>
+                Кожен раунд — це десять запитань про різні країни: від столиць
+                і прапорів до національних страв та музики.
+              </p>
+            </div>
+          </article>
+
+          <article class="trivia-item">
+            <img src="images/quiz.svg" alt="Картка вікторини зі знаком питання та варіантами відповідей" width="150" height="112" loading="lazy">
+            <div class="trivia-text">
+              <h3>Факти, які надихають</h3>
+              <p>
+                Після кожної відповіді ми показуємо коротке пояснення, щоб ви
+                не лише грали, а й запам’ятовували нові факти.
+              </p>
+            </div>
+          </article>
+
+          <article class="trivia-item">
+            <img src="images/trophy.svg" alt="Золотий кубок переможця вікторини" width="150" height="112" loading="lazy">
+            <div class="trivia-text">
+              <h3>Живі турніри щотижня</h3>
+              <p>
+                Щосуботи о 19:00 за Києвом стартує швидкісний турнір: менше часу
+                на відповідь — більше очок за місце в рейтингу.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Categories -->
+      <section id="categories" class="section" aria-labelledby="categories-title">
+        <h2 class="section-title" id="categories-title">Categories</h2>
+        <p class="section-intro">
+          Обирайте тему, яка вам до душі, або пройдіть усі вісім поспіль.
+        </p>
+
+        <ul class="categories-list">
+          <li><a href="#trivia">Geography</a></li>
+          <li><a href="#trivia">History</a></li>
+          <li><a href="#trivia">Science</a></li>
+          <li><a href="#trivia">Movies</a></li>
+          <li><a href="#trivia">Sports</a></li>
+          <li><a href="#trivia">Music</a></li>
+          <li><a href="#trivia">Literature</a></li>
+          <li><a href="#trivia">Technology</a></li>
+        </ul>
+      </section>
+
+      <!-- Scores -->
+      <section id="scores" class="section" aria-labelledby="scores-title">
+        <h2 class="section-title" id="scores-title">Scores</h2>
+        <p class="section-intro">
+          Топ гравців тижня. Оновлюється щоразу після завершення турніру.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <caption class="sr-only">Рейтинг гравців World Trivia за тиждень</caption>
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Name</th>
+                <th scope="col">Score</th>
+                <th scope="col">Country</th>
+                <th scope="col">Category</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Olena K.</td>
+                <td>9 870</td>
+                <td>Україна</td>
+                <td>Geography</td>
+                <td>14.11.2026</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Marco R.</td>
+                <td>9 640</td>
+                <td>Італія</td>
+                <td>History</td>
+                <td>14.11.2026</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Yuki T.</td>
+                <td>9 510</td>
+                <td>Японія</td>
+                <td>Science</td>
+                <td>13.11.2026</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Sofia M.</td>
+                <td>9 320</td>
+                <td>Іспанія</td>
+                <td>Music</td>
+                <td>12.11.2026</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Daniel O.</td>
+                <td>9 110</td>
+                <td>Бразилія</td>
+                <td>Sports</td>
+                <td>12.11.2026</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Anna P.</td>
+                <td>8 940</td>
+                <td>Польща</td>
+                <td>Movies</td>
+                <td>11.11.2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Subscribe -->
+      <section id="subscribe" class="section subscribe" aria-labelledby="subscribe-title">
+        <div class="subscribe-text">
+          <h2 class="section-title" id="subscribe-title">Subscribe</h2>
+          <p>
+            Отримуйте «Puzzle of the Day» на пошту щоранку — одне запитання,
+            одна підказка і жодного спойлера.
+          </p>
+        </div>
+        <button class="puzzle-btn" type="button" aria-label="Підписатися на щоденну головоломку Puzzle of the Day">
+          Puzzle of the Day
+        </button>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section" aria-labelledby="contact-title">
+        <h2 class="section-title" id="contact-title">Contact</h2>
+        <p class="section-intro">
+          Маєте ідею для категорії, знайшли помилку в запитанні або хочете
+          співпрацювати? Напишіть нам — ми відповідаємо протягом двох робочих днів.
+        </p>
+
+        <form class="contact-form" action="#" method="post">
+          <label for="name">Ім’я</label>
+          <input type="text" id="name" name="name" placeholder="Як до вас звертатися?" autocomplete="name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+
+          <label for="message">Повідомлення</label>
+          <textarea id="message" name="message" rows="5" placeholder="Розкажіть, чим можемо допомогти" required></textarea>
+
+          <button type="submit">Надіслати</button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 World Trivia. Граємо та пізнаємо світ разом.</p>
+      <nav aria-label="Навігація у футері">
+        <ul class="footer-nav">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#scores">Scores</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
