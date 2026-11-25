@@ -1,0 +1,407 @@
+/* =========================================================
+   Новини Львівської політехніки
+   SCSS: змінні, вкладеність, мапи, міксини, медіа-запити
+   ========================================================= */
+
+/* Вбудований модуль для роботи з мапами.
+   map.has-key / map.get — сучасний синтаксис функцій
+   map-has-key / map-get з інструкції. */
+@use "sass:map";
+
+/* ---------- 1. Змінні ---------- */
+
+/* Кольори */
+$primary-color: #252775;      /* брендовий синій (--brand) */
+$secondary-color: #00a1e4;    /* акцент / hover (--brand-hover) */
+$text-color: #1f2430;         /* основний текст (--ink) */
+
+$surface-color: #ffffff;
+$page-bg: #f4f5f9;
+$featured-bg: #c2c2c2;
+$link-color: #1f6ba5;
+$link-hover-color: #144f7c;
+
+/* Шрифти та розміри */
+$font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-heading: "Roboto Condensed", sans-serif;
+
+$font-size-base: 1rem;
+$font-size-small: .72rem;
+$font-size-news-title: 1.12rem;
+$font-size-featured-title: clamp(1.2rem, 2vw, 1.7rem);
+$font-size-section-title: clamp(1.75rem, 3vw, 2.5rem);
+
+/* Розміри та анімація */
+$gap: 24px;
+$container-width: 1200px;
+$ease: cubic-bezier(.22, .61, .36, 1);
+
+/* ---------- 2. Мапа брейкпоінтів і міксин ---------- */
+
+$breakpoints: (
+    mobile: 576px,
+    tablet: 768px,
+    desktop: 1024px
+);
+
+@mixin respond-to($breakpoint) {
+    @if map.has-key($breakpoints, $breakpoint) {
+        @media (min-width: map.get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @error "Невідомий брейкпоінт: #{$breakpoint}";
+    }
+}
+
+/* ---------- 3. Базові стилі ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 112.5%; /* 18px база — більший, читабельніший текст */
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background: $page-bg;
+    color: $text-color;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: $primary-color;
+
+    &:focus-visible {
+        outline: 3px solid $secondary-color;
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
+}
+
+.container {
+    width: min(100% - 32px, $container-width);
+    margin-inline: auto;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 100;
+    padding: 10px 16px;
+    background: $primary-color;
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top .25s $ease;
+
+    &:focus {
+        top: 0;
+    }
+}
+
+/* =========================================================
+   4. header#featured_container — FLEXBOX
+   ========================================================= */
+
+#featured_container {
+    position: relative;
+    padding: clamp(28px, 4vw, 56px) 0;
+    background: $featured-bg;
+
+    /* декоративна лінія, як на lpnu.ua */
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 2px;
+        background: linear-gradient(90deg, #979797 0%, $featured-bg 50%, #979797 100%);
+    }
+}
+
+/* саме flex-контейнер: вирівнювання та розподіл простору */
+.featured-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: $gap;
+}
+
+.featured-card {
+    position: relative;
+    flex: 1 1 100%; /* mobile: 1 колонка */
+    min-width: 0;
+    overflow: hidden;
+    background: #fff;
+    animation: card-fade-up .7s $ease both;
+
+    /* послідовна поява карток */
+    @for $i from 2 through 4 {
+        &:nth-child(#{$i}) {
+            animation-delay: ($i - 1) * .08s;
+        }
+    }
+
+    > a {
+        position: relative;
+        display: grid;
+        grid-template-areas: "card";
+        height: 100%;
+        color: #fff;
+        text-decoration: none;
+
+        > * {
+            grid-area: card;
+        }
+
+        // hover / focus
+        &:hover,
+        &:focus-visible {
+            img {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            h2 span {
+                background: $secondary-color;
+            }
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        min-height: 200px;
+        aspect-ratio: 2 / 1;
+        object-fit: cover;
+        opacity: 1;
+        transition: opacity .5s $ease, transform .7s $ease;
+    }
+
+    h2 {
+        z-index: 1;
+        align-self: end;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        color: #fff;
+        font-family: $font-family-heading;
+        font-size: $font-size-featured-title;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1.35;
+
+        span {
+            padding: 2px 6px;
+            background: $primary-color;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            transition: background .45s $ease;
+        }
+    }
+}
+
+/* ---------- 5. main > .main-container — CSS GRID ---------- */
+
+main {
+    padding: clamp(36px, 5vw, 64px) 0 clamp(48px, 6vw, 80px);
+    background: $surface-color;
+}
+
+.main-container {
+    width: min(100% - 32px, $container-width);
+    margin-inline: auto;
+}
+
+.view-header {
+    margin-bottom: clamp(20px, 3vw, 32px);
+    text-align: center;
+
+    h2 {
+        margin: 0;
+        font-family: $font-family-heading;
+        font-size: $font-size-section-title;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1.2;
+
+        a {
+            position: relative;
+            color: $link-color;
+            text-decoration: none;
+            transition: color .3s $ease;
+
+            &::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                bottom: -6px;
+                left: 0;
+                height: 2px;
+                background: $link-color;
+                transform-origin: left center;
+                animation: line-grow .8s .25s $ease both;
+                transition: background .3s $ease;
+            }
+
+            &:hover {
+                color: $link-hover-color;
+
+                &::after {
+                    background: $link-hover-color;
+                }
+            }
+        }
+    }
+}
+
+/* сітка новин */
+.news-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr); /* mobile: 1 колонка */
+    gap: 40px 28px;
+}
+
+.news-card {
+    background: transparent;
+    animation: card-fade-up .6s $ease both;
+
+    /* затримка появи для кожної картки */
+    @for $i from 1 through 8 {
+        &:nth-child(#{$i}) {
+            animation-delay: $i * .04s;
+        }
+    }
+
+    &-link {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .news_teaser {
+        position: relative;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            transition: transform .6s $ease, filter .6s $ease;
+        }
+    }
+
+    .news-date {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 4px 8px;
+        background: rgb(70 70 70 / 78%);
+        color: #fff;
+        font-size: $font-size-small;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        margin: 0;
+        padding: 12px 6px 0;
+        color: $link-color;
+        font-family: $font-family-heading;
+        font-size: $font-size-news-title;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1.4;
+        transition: color .3s $ease;
+    }
+
+    &:hover {
+        .news_teaser img {
+            transform: scale(1.06);
+        }
+
+        h3 {
+            color: $link-hover-color;
+            text-decoration: underline;
+        }
+    }
+}
+
+/* ---------- 6. Анімації ---------- */
+
+@keyframes card-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes line-grow {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* ---------- 7. Адаптивність через мапу та міксин ---------- */
+
+/* Tablet: 768px – 1023px — 2 колонки */
+@include respond-to(tablet) {
+    .featured-card {
+        flex-basis: calc((100% - #{$gap}) / 2);
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Desktop: 1024px і більше — сітка новин 4 колонки,
+   блок featured залишається 2×2, як на lpnu.ua */
+@include respond-to(desktop) {
+    .news-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* Повага до налаштувань користувача */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+    }
+}

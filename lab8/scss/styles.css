@@ -1,0 +1,349 @@
+@charset "UTF-8";
+/* =========================================================
+   Новини Львівської політехніки
+   SCSS: змінні, вкладеність, мапи, міксини, медіа-запити
+   ========================================================= */
+/* Вбудований модуль для роботи з мапами.
+   map.has-key / map.get — сучасний синтаксис функцій
+   map-has-key / map-get з інструкції. */
+/* ---------- 1. Змінні ---------- */
+/* Кольори */
+/* брендовий синій (--brand) */
+/* акцент / hover (--brand-hover) */
+/* основний текст (--ink) */
+/* Шрифти та розміри */
+/* Розміри та анімація */
+/* ---------- 2. Мапа брейкпоінтів і міксин ---------- */
+/* ---------- 3. Базові стилі ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 112.5%; /* 18px база — більший, читабельніший текст */
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f4f5f9;
+  color: #1f2430;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: #252775;
+}
+a:focus-visible {
+  outline: 3px solid #00a1e4;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: #252775;
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* =========================================================
+   4. header#featured_container — FLEXBOX
+   ========================================================= */
+#featured_container {
+  position: relative;
+  padding: clamp(28px, 4vw, 56px) 0;
+  background: #c2c2c2;
+  /* декоративна лінія, як на lpnu.ua */
+}
+#featured_container::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: linear-gradient(90deg, #979797 0%, #c2c2c2 50%, #979797 100%);
+}
+
+/* саме flex-контейнер: вирівнювання та розподіл простору */
+.featured-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.featured-card {
+  position: relative;
+  flex: 1 1 100%; /* mobile: 1 колонка */
+  min-width: 0;
+  overflow: hidden;
+  background: #fff;
+  animation: card-fade-up 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  /* послідовна поява карток */
+}
+.featured-card:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.featured-card:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.featured-card:nth-child(4) {
+  animation-delay: 0.24s;
+}
+.featured-card > a {
+  position: relative;
+  display: grid;
+  grid-template-areas: "card";
+  height: 100%;
+  color: #fff;
+  text-decoration: none;
+}
+.featured-card > a > * {
+  grid-area: card;
+}
+.featured-card > a:hover img, .featured-card > a:focus-visible img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+.featured-card > a:hover h2 span, .featured-card > a:focus-visible h2 span {
+  background: #00a1e4;
+}
+.featured-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  aspect-ratio: 2/1;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.featured-card h2 {
+  z-index: 1;
+  align-self: end;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  color: #fff;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.35;
+}
+.featured-card h2 span {
+  padding: 2px 6px;
+  background: #252775;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ---------- 5. main > .main-container — CSS GRID ---------- */
+main {
+  padding: clamp(36px, 5vw, 64px) 0 clamp(48px, 6vw, 80px);
+  background: #ffffff;
+}
+
+.main-container {
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+}
+
+.view-header {
+  margin-bottom: clamp(20px, 3vw, 32px);
+  text-align: center;
+}
+.view-header h2 {
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.2;
+}
+.view-header h2 a {
+  position: relative;
+  color: #1f6ba5;
+  text-decoration: none;
+  transition: color 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.view-header h2 a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  left: 0;
+  height: 2px;
+  background: #1f6ba5;
+  transform-origin: left center;
+  animation: line-grow 0.8s 0.25s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  transition: background 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.view-header h2 a:hover {
+  color: #144f7c;
+}
+.view-header h2 a:hover::after {
+  background: #144f7c;
+}
+
+/* сітка новин */
+.news-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* mobile: 1 колонка */
+  gap: 40px 28px;
+}
+
+.news-card {
+  background: transparent;
+  animation: card-fade-up 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  /* затримка появи для кожної картки */
+}
+.news-card:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.news-card:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.news-card:nth-child(3) {
+  animation-delay: 0.12s;
+}
+.news-card:nth-child(4) {
+  animation-delay: 0.16s;
+}
+.news-card:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.news-card:nth-child(6) {
+  animation-delay: 0.24s;
+}
+.news-card:nth-child(7) {
+  animation-delay: 0.28s;
+}
+.news-card:nth-child(8) {
+  animation-delay: 0.32s;
+}
+.news-card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+.news-card .news_teaser {
+  position: relative;
+  overflow: hidden;
+}
+.news-card .news_teaser img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.news-card .news-date {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 4px 8px;
+  background: rgba(70, 70, 70, 0.78);
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.news-card h3 {
+  margin: 0;
+  padding: 12px 6px 0;
+  color: #1f6ba5;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.12rem;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.4;
+  transition: color 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.news-card:hover .news_teaser img {
+  transform: scale(1.06);
+}
+.news-card:hover h3 {
+  color: #144f7c;
+  text-decoration: underline;
+}
+
+/* ---------- 6. Анімації ---------- */
+@keyframes card-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes line-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+/* ---------- 7. Адаптивність через мапу та міксин ---------- */
+/* Tablet: 768px – 1023px — 2 колонки */
+@media (min-width: 768px) {
+  .featured-card {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+  .news-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* Desktop: 1024px і більше — сітка новин 4 колонки,
+   блок featured залишається 2×2, як на lpnu.ua */
+@media (min-width: 1024px) {
+  .news-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+/* Повага до налаштувань користувача */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
